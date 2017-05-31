@@ -34,13 +34,24 @@ namespace ITLec.CRMChartGuy.AppCode
         }
 
         private static ITLec.CRMChartGuy.Chart chartStructure = null;
+
+        public static string ChartStructurePath
+        {
+            get
+            {
+                string pluginLocation = XrmToolBox.Extensibility.Paths.PluginsPath;
+
+                return string.Format("{0}\\{1}", pluginLocation,"ChartStructure.xml");
+            }
+        }
+
         public static ITLec.CRMChartGuy.Chart ChartStructure
         {
             get
             {
                 if(chartStructure == null)
                 {
-                    chartStructure = (ITLec.CRMChartGuy.Chart)ITLec.CRMChartGuy.AppCode.Common.DeserializeObj("ChartStructure.xml", new ITLec.CRMChartGuy.Chart());
+                    chartStructure = (ITLec.CRMChartGuy.Chart)ITLec.CRMChartGuy.AppCode.Common.DeserializeObj(ChartStructurePath, new ITLec.CRMChartGuy.Chart());
                 }
 
                 return chartStructure;
