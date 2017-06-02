@@ -57,6 +57,19 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             }
         }
 
+        public bool IsIgnoreSave
+        {
+
+            get
+            {
+                return GetIsIgnoreSave();
+            }
+            //set
+            //{
+            //    SetLabel(value);
+            //}
+        }
+
         public bool? IsValueChanged { get;  set; }
 
         protected abstract string GetValue();
@@ -66,5 +79,6 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         protected abstract void SetLabel(string label);
         protected abstract string GetLabel();
         protected abstract void FillControls();
+        protected abstract bool GetIsIgnoreSave();
     }
 }

@@ -54,6 +54,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
             if (!string.IsNullOrEmpty(val))
             {
+                checkBoxIgnoreSaving.Visible = true;
 
                 string[] strs = val.Split(',');
 
@@ -65,10 +66,18 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
                 comboBoxFontType.Text = strs[0];
 
-                if (numericUpDownFontSize != null)
+                if (!string.IsNullOrEmpty(strs[1]))
+                {
                     numericUpDownFontSize.Value = decimal.Parse(strs[1].Replace("px", ""));
-                
+                    numericUpDownFontSize.ForeColor = Color.Black;
+                }
+
             }
+        }
+
+        protected override bool GetIsIgnoreSave()
+        {
+            return checkBoxIgnoreSaving.Checked;
         }
 
         protected override void SetLabel(string label)
@@ -78,6 +87,19 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         protected override string GetLabel()
         {
             return groupBoxFont.Text;
+        }
+
+        private void numericUpDownFontSize_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownFontSize.ForeColor = Color.Black;
+
+            checkBoxIgnoreSaving.Visible = true;
+        }
+
+        private void comboBoxFontType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            checkBoxIgnoreSaving.Visible = true;
         }
     }
 }

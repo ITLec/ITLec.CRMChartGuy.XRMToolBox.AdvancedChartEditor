@@ -39,7 +39,7 @@ namespace ITLec.CRMChartGuy.AppCode
         {
             get
             {
-                string pluginLocation = XrmToolBox.Extensibility.Paths.PluginsPath;
+                string pluginLocation = XrmToolBox.Extensibility.Paths.SettingsPath;
 
                 return string.Format("{0}\\{1}", pluginLocation,"ChartStructure.xml");
             }

@@ -91,10 +91,15 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
             foreach (var dic in DictionaryKeyControl)
             {
-                if (collec.Keys.Contains(dic.Key) ||
+                if (
+                    
+                  (  collec.Keys.Contains(dic.Key) ||
                     (!string.IsNullOrEmpty(dic.Value.Value) &&
 
-                    dic.Value.Value != dic.Value.InitValue))
+                    dic.Value.Value != dic.Value.InitValue)) &&
+
+                   ! dic.Value.IsIgnoreSave
+                    )
                 {
                     collection.Add(dic.Key, dic.Value.Value);
                 }

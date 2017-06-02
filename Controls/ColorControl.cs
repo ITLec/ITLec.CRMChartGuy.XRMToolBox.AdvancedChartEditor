@@ -57,9 +57,10 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
         protected override void SetValue(string val)
         {
-            textBoxColor.Text = val;
             if (!string.IsNullOrEmpty(val))
             {
+            textBoxColor.Text = val;
+            checkBoxIgnoreSaving.Visible = true;
                 string[] strs = val.Split(',');
 
                 Color color = ITLec.CRMChartGuy.AppCode.Common.ConvertStringToColor(val).Value;
@@ -76,7 +77,11 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         {
             return lblColorLLabel.Text;
         }
-        
+
+        protected override bool  GetIsIgnoreSave()
+        {
+            return checkBoxIgnoreSaving.Checked;
+        }
 
         private void panelColor_Click(object sender, EventArgs e)
         {
@@ -86,6 +91,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
         private void textBoxColor_TextChanged(object sender, EventArgs e)
         {
+            checkBoxIgnoreSaving.Visible = true;
             try
             {
                 Color? color = ITLec.CRMChartGuy.AppCode.Common.ConvertStringToColor(textBoxColor.Text);

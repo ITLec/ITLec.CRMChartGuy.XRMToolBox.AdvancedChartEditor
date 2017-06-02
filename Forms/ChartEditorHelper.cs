@@ -80,14 +80,10 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
              doc.AppendChild(rootNode);
 
             AddXmlNode(tvSiteMap.Nodes[0], rootNode);
-            var tmpDoc = doc.ChildNodes[0].ChildNodes[0].OuterXml;
-
-       //     tmpDoc.
-
+           // var tmpDoc = doc.ChildNodes[0].ChildNodes[0].OuterXml;
+            
             ChartXML = doc.ChildNodes[0].ChildNodes[0].OuterXml;
-
-
-
+            
         }
 
         private void TvSiteMapNodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -346,18 +342,6 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
         {
 
         }
-
-        /*  private void btnOk_Click(object sender, EventArgs e)
-          {
-
-              var doc = new XmlDocument();
-              XmlNode rootNode = doc.CreateElement("charts");
-              // doc.AppendChild(rootNode);
-
-              AddXmlNode(tvSiteMap.Nodes[0], rootNode);
-
-              MessageBox.Show(doc.SelectSingleNode("chart").OuterXml);
-              siteMapDoc.LoadXml(doc.SelectSingleNode("chart").OuterXml);
-          }*/
+        
     }
 }

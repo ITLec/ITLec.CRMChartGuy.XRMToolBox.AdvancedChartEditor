@@ -75,13 +75,13 @@ namespace ITLec.CRMChartGuy.AppCode
 
                         foreach (string propertyItem in propertyItems)
                         {
-                            string[] propertyItemStrs = propertyItem.Split('=');
-
-                            string propertyItemKey = propertyItemStrs[0];
-                            string propertyItemValue = propertyItemStrs[1];
-                            customAttributes.Add(propertyItemKey, propertyItemValue);
-
-
+                            if (!string.IsNullOrEmpty(propertyItem))
+                            {
+                                string[] propertyItemStrs = propertyItem.Split('=');
+                                string propertyItemKey = propertyItemStrs[0];
+                                string propertyItemValue = propertyItemStrs[1];
+                                customAttributes.Add(propertyItemKey, propertyItemValue);
+                            }
                         }
                         customNode.Tag = customAttributes;
                         node.Nodes.Add(customNode);

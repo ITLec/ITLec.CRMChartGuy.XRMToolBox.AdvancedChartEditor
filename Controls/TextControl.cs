@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
-    public partial class TextControl : BaseChartControl//UserControl// 
+    public partial class TextControl : BaseChartControl// UserControl//
     {
         public TextControl()
         {
@@ -40,6 +40,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         {
             if (!string.IsNullOrEmpty(val))
             {
+                checkBoxIgnoreSaving.Visible = true;
                 txtText.Text = val;
             }
         }
@@ -52,6 +53,16 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         protected override string GetLabel()
         {
             return lblLabel.Text;
+        }
+
+        protected override bool GetIsIgnoreSave()
+        {
+            return checkBoxIgnoreSaving.Checked;
+        }
+
+        private void txtText_TextChanged(object sender, EventArgs e)
+        {
+            checkBoxIgnoreSaving.Visible = true;
         }
     }
 }

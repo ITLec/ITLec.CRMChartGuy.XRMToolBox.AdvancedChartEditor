@@ -32,8 +32,9 @@
             this.colorDialogSelector = new System.Windows.Forms.ColorDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelColor = new System.Windows.Forms.Panel();
-            this.textBoxColor = new System.Windows.Forms.TextBox();
             this.lblClickToSelectColor = new System.Windows.Forms.Label();
+            this.textBoxColor = new System.Windows.Forms.TextBox();
+            this.checkBoxIgnoreSaving = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelColor.SuspendLayout();
             this.SuspendLayout();
@@ -44,20 +45,21 @@
             this.lblColorLLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblColorLLabel.Location = new System.Drawing.Point(3, 0);
             this.lblColorLLabel.Name = "lblColorLLabel";
-            this.lblColorLLabel.Size = new System.Drawing.Size(232, 44);
+            this.lblColorLLabel.Size = new System.Drawing.Size(172, 44);
             this.lblColorLLabel.TabIndex = 1;
             this.lblColorLLabel.Text = "Color";
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.lblColorLLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panelColor, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxColor, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -70,20 +72,11 @@
             // 
             this.panelColor.Controls.Add(this.lblClickToSelectColor);
             this.panelColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelColor.Location = new System.Drawing.Point(241, 3);
+            this.panelColor.Location = new System.Drawing.Point(181, 3);
             this.panelColor.Name = "panelColor";
-            this.panelColor.Size = new System.Drawing.Size(172, 38);
+            this.panelColor.Size = new System.Drawing.Size(143, 38);
             this.panelColor.TabIndex = 3;
             this.panelColor.Click += new System.EventHandler(this.panelColor_Click);
-            // 
-            // textBoxColor
-            // 
-            this.textBoxColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxColor.Location = new System.Drawing.Point(419, 3);
-            this.textBoxColor.Name = "textBoxColor";
-            this.textBoxColor.Size = new System.Drawing.Size(174, 22);
-            this.textBoxColor.TabIndex = 4;
-            this.textBoxColor.TextChanged += new System.EventHandler(this.textBoxColor_TextChanged);
             // 
             // lblClickToSelectColor
             // 
@@ -95,6 +88,27 @@
             this.lblClickToSelectColor.TabIndex = 0;
             this.lblClickToSelectColor.Text = "Click To Select Color";
             this.lblClickToSelectColor.Click += new System.EventHandler(this.lblClickToSelectColor_Click);
+            // 
+            // textBoxColor
+            // 
+            this.textBoxColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxColor.Location = new System.Drawing.Point(330, 3);
+            this.textBoxColor.Name = "textBoxColor";
+            this.textBoxColor.Size = new System.Drawing.Size(143, 22);
+            this.textBoxColor.TabIndex = 4;
+            this.textBoxColor.TextChanged += new System.EventHandler(this.textBoxColor_TextChanged);
+            // 
+            // checkBoxIgnoreSaving
+            // 
+            this.checkBoxIgnoreSaving.AutoSize = true;
+            this.checkBoxIgnoreSaving.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxIgnoreSaving.Location = new System.Drawing.Point(479, 3);
+            this.checkBoxIgnoreSaving.Name = "checkBoxIgnoreSaving";
+            this.checkBoxIgnoreSaving.Size = new System.Drawing.Size(114, 38);
+            this.checkBoxIgnoreSaving.TabIndex = 5;
+            this.checkBoxIgnoreSaving.Text = "Remove";
+            this.checkBoxIgnoreSaving.UseVisualStyleBackColor = true;
+            this.checkBoxIgnoreSaving.Visible = false;
             // 
             // ColorControl
             // 
@@ -118,5 +132,6 @@
         private System.Windows.Forms.Panel panelColor;
         private System.Windows.Forms.TextBox textBoxColor;
         private System.Windows.Forms.Label lblClickToSelectColor;
+        private System.Windows.Forms.CheckBox checkBoxIgnoreSaving;
     }
 }

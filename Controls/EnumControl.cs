@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
-    public partial class EnumControl : BaseChartControl//UserControl//
+    public partial class EnumControl :BaseChartControl//UserControl// 
     {
         string currentNodeName;
         string _enumType;
@@ -88,7 +88,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         {
             if (!string.IsNullOrEmpty(val))
             {
-
+                checkBoxIgnoreSaving.Visible = true;
                 if (!EnumItems.ContainsKey(val))
                 {
                     EnumItems.Add(val, val);
@@ -104,8 +104,18 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             }
         }
 
+
+        protected override bool GetIsIgnoreSave()
+        {
+            return checkBoxIgnoreSaving.Checked;
+        }
+
         private void cmbEnum_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(cmbEnum.SelectedText))
+            {
+                checkBoxIgnoreSaving.Visible = true;
+            }
             SetCustomProperties();
         }
 

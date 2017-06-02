@@ -88,7 +88,7 @@
             this.nodeMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addSystemAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSystemGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStripItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -97,10 +97,9 @@
             this.gbSiteMap.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.gbProperties.SuspendLayout();
-            this.panelContainer.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.nodeMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripButtonAddXml
@@ -318,7 +317,7 @@
             // 
             // gbSiteMap
             // 
-            this.gbSiteMap.Controls.Add(this.btnOk);
+            this.gbSiteMap.Controls.Add(this.tableLayoutPanel1);
             this.gbSiteMap.Controls.Add(this.toolStrip1);
             this.gbSiteMap.Controls.Add(this.tvSiteMap);
             this.gbSiteMap.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -335,10 +334,10 @@
             // 
             this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnOk.Location = new System.Drawing.Point(4, 680);
+            this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOk.Location = new System.Drawing.Point(3, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(402, 35);
+            this.btnOk.Size = new System.Drawing.Size(195, 26);
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
@@ -397,7 +396,6 @@
             // 
             // panelContainer
             // 
-            this.panelContainer.Controls.Add(this.panel1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(4, 49);
             this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
@@ -410,9 +408,9 @@
             this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Location = new System.Drawing.Point(0, 0);
+            this.buttonCancel.Location = new System.Drawing.Point(204, 3);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(565, 34);
+            this.buttonCancel.Size = new System.Drawing.Size(195, 26);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -628,14 +626,21 @@
             this.addSystemGroupToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.addSystemGroupToolStripMenuItem.Text = "Add  default SiteMap Group";
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.buttonCancel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 632);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(565, 34);
-            this.panel1.TabIndex = 2;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnOk, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 683);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 32);
+            this.tableLayoutPanel1.TabIndex = 18;
             // 
             // ChartEditorHelper
             // 
@@ -657,11 +662,10 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.gbProperties.ResumeLayout(false);
-            this.panelContainer.ResumeLayout(false);
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
             this.nodeMenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -726,6 +730,6 @@
         internal System.Windows.Forms.ToolStripMenuItem addSystemGroupToolStripMenuItem;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
