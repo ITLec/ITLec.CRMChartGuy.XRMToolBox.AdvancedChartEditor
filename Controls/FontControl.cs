@@ -99,7 +99,15 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         private void comboBoxFontType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            checkBoxIgnoreSaving.Visible = true;
+            //   checkBoxIgnoreSaving.Visible = true;
+
+
+            if (!string.IsNullOrEmpty(comboBoxFontType.SelectedValue.ToString()) &&
+                comboBoxFontType.SelectedValue.ToString() != "[-1, ]")
+            {
+                checkBoxIgnoreSaving.Visible = true;
+            }
+
         }
     }
 }

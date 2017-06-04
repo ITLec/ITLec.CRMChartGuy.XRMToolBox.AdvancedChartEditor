@@ -112,7 +112,8 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
         private void cmbEnum_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cmbEnum.SelectedText))
+            if (!string.IsNullOrEmpty(cmbEnum.SelectedValue.ToString()) && 
+                cmbEnum.SelectedValue.ToString() != "[-1, ]")
             {
                 checkBoxIgnoreSaving.Visible = true;
             }

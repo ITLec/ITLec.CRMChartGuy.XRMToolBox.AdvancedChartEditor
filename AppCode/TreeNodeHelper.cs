@@ -216,6 +216,30 @@ namespace ITLec.CRMChartGuy.AppCode
             string nodeName = (string.IsNullOrEmpty(name))? node.Text : node.Text + "." + name;
             return FullNodeName(node.Parent, nodeName);
         }
+
+
+        static public string GetFormatedXML(string xmlStr)
+        {
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xmlStr);
+
+            StringBuilder sb = new StringBuilder();
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true,
+                IndentChars = "  ",
+                NewLineChars = "\r\n",
+                NewLineHandling = NewLineHandling.Replace
+            };
+
+            settings.OmitXmlDeclaration = true;
+            using (XmlWriter writer = XmlWriter.Create(sb, settings))
+            {
+                doc.Save(writer);
+            }
+            return sb.ToString();
+        }
         #endregion Methods
     }
 }

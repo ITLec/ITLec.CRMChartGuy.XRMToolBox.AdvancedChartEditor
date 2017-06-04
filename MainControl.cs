@@ -20,7 +20,7 @@ namespace ITLecChartGuy.AdvancedChartEditor
         private string currentFolder;
         private ListViewItem[] listViewItemsCache;
 
-        public string HelpUrl => "https://github.com/MscrmTools/XrmToolBox/wiki/Chart-Manager";
+        public string HelpUrl => "";
 
         #region Constructor
 

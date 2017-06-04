@@ -40,9 +40,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
 
             tecDataDescription.SetHighlighting("XML");
             tecVisualizationDescription.SetHighlighting("XML");
-
-            // Fix to make Visualization Description text editor content using
-            // all width
+            
             Size = new Size(Size.Width + 1, Size.Height);
         }
 
@@ -129,15 +127,14 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             tecVisualizationDescription.ActiveTextAreaControl.SelectionManager.SetSelection(new ICSharpCode.TextEditor.TextLocation(0, pos.Line), new ICSharpCode.TextEditor.TextLocation(1000000000, pos.Line));
 
             var str = tecVisualizationDescription.ActiveTextAreaControl.SelectionManager.SelectedText;
-       //     MessageBox.Show(str);
 
-            //  lblVisualizationDescription.Focus();
             str = tecVisualizationDescription.Text;
-
             var frm = new ChartEditorHelper(str);
            if ( frm.ShowDialog() ==  DialogResult.OK)
             {
-                tecVisualizationDescription.Text = frm.ChartXML;
+                string chartXML = frm.ChartXML;
+                chartXML = ITLec.CRMChartGuy.AppCode.TreeNodeHelper.GetFormatedXML(chartXML);
+                tecVisualizationDescription.Text = chartXML;
             }
         }
     }
