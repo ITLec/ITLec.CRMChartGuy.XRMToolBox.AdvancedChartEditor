@@ -58,18 +58,28 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
                 string[] strs = val.Split(',');
 
-                if (!FontTypes.ContainsKey(strs[0]))
+                if (strs.Length > 0)
                 {
-                    FontTypes.Add(strs[0], strs[0]);
-                    comboBoxFontType.DataSource = new BindingSource(FontTypes, null);
-                }
+                    if (!FontTypes.ContainsKey(strs[0]))
+                    {
+                        FontTypes.Add(strs[0], strs[0]);
+                        comboBoxFontType.DataSource = new BindingSource(FontTypes, null);
+                    }
 
-                comboBoxFontType.Text = strs[0];
+                    comboBoxFontType.Text = strs[0];
 
-                if (!string.IsNullOrEmpty(strs[1]))
-                {
-                    numericUpDownFontSize.Value = decimal.Parse(strs[1].Replace("px", ""));
-                    numericUpDownFontSize.ForeColor = Color.Black;
+
+                    if (!string.IsNullOrEmpty(strs[1]))
+                    {
+                        string fontSizeStr = strs[1].Replace("px", "").Replace(" ", "");
+
+                        decimal fontSize;
+                        if (decimal.TryParse(fontSizeStr, out fontSize))
+                        {
+                            numericUpDownFontSize.Value = fontSize;
+                            numericUpDownFontSize.ForeColor = Color.Black;
+                        }
+                    }
                 }
 
             }

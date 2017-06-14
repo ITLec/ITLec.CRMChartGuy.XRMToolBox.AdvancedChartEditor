@@ -58,12 +58,12 @@
             65536});
             this.numericUpDownNumber.Location = new System.Drawing.Point(183, 3);
             this.numericUpDownNumber.Maximum = new decimal(new int[] {
-            10000,
+            100000000,
             0,
             0,
             0});
             this.numericUpDownNumber.Minimum = new decimal(new int[] {
-            10000,
+            100000000,
             0,
             0,
             -2147483648});
