@@ -84,6 +84,9 @@ public  class BaseMainChartUserControl :  UserControl
                         obj = new EnumControl(NodeName + ":" + strs[1]);
                         break;
 
+                    default:
+                        obj = new TextControl();
+                        break;
                 }
 
                 AddDictionaryKeyControl(obj, key, val, label);
