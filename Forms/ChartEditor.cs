@@ -44,48 +44,6 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             Size = new Size(Size.Width + 1, Size.Height);
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            chart["name"] = txtName.Text;
-            chart["description"] = txtDescription.Text;
-            chart["datadescription"] = tecDataDescription.Text;
-            chart["presentationdescription"] = tecVisualizationDescription.Text;
-
-
-            infoPanel = InformationPanel.GetInformationPanel(this, "Updating chart...", 350, 150);
-
-            var worker = new BackgroundWorker {WorkerReportsProgress = true};
-            worker.DoWork += (w, evt) =>
-            {
-                service.Update((Entity)evt.Argument);
-
-                ((BackgroundWorker)w).ReportProgress(0,"Publishing entity...");
-
-                service.Execute(new PublishXmlRequest
-                {
-                    ParameterXml = string.Format("<importexportxml><entities><entity>{0}</entity></entities><nodes/><securityroles/><settings/><workflows/></importexportxml>", chart.GetAttributeValue<string>("primaryentitytypecode"))
-                });
-            };
-            worker.ProgressChanged += (w, evt) =>
-            {
-                InformationPanel.ChangeInformationPanelMessage(infoPanel, evt.UserState.ToString());
-            };
-            worker.RunWorkerCompleted += (w, evt) =>
-            {
-                if (evt.Error != null)
-                {
-                    MessageBox.Show(this, evt.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    HasUpdatedContent = true;
-                }
-
-                Controls.Remove(infoPanel);
-                infoPanel.Dispose();
-            };
-            worker.RunWorkerAsync(chart);
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -133,8 +91,190 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
            if ( frm.ShowDialog() ==  DialogResult.OK)
             {
                 string chartXML = frm.ChartXML;
-                chartXML = ITLec.CRMChartGuy.AppCode.TreeNodeHelper.GetFormatedXML(chartXML);
-                tecVisualizationDescription.Text = chartXML;
+
+                if (!string.IsNullOrEmpty(chartXML))
+                {
+                    chartXML = ITLec.CRMChartGuy.AppCode.TreeNodeHelper.GetFormatedXML(chartXML);
+                    tecVisualizationDescription.Text = chartXML;
+                }
+            }
+        }
+
+        private void btnUpdatePublish_Click(object sender, EventArgs e)
+        {
+
+            chart["name"] = txtName.Text;
+            chart["description"] = txtDescription.Text;
+            chart["datadescription"] = tecDataDescription.Text;
+            chart["presentationdescription"] = tecVisualizationDescription.Text;
+
+
+            infoPanel = InformationPanel.GetInformationPanel(this, "Updating chart...", 350, 150);
+
+            var worker = new BackgroundWorker { WorkerReportsProgress = true };
+            worker.DoWork += (w, evt) =>
+            {
+                service.Update((Entity)evt.Argument);
+
+                ((BackgroundWorker)w).ReportProgress(0, "Publishing entity...");
+
+                service.Execute(new PublishXmlRequest
+                {
+                    ParameterXml = string.Format("<importexportxml><entities><entity>{0}</entity></entities><nodes/><securityroles/><settings/><workflows/></importexportxml>", chart.GetAttributeValue<string>("primaryentitytypecode"))
+                });
+            };
+            worker.ProgressChanged += (w, evt) =>
+            {
+                InformationPanel.ChangeInformationPanelMessage(infoPanel, evt.UserState.ToString());
+            };
+            worker.RunWorkerCompleted += (w, evt) =>
+            {
+                if (evt.Error != null)
+                {
+                    MessageBox.Show(this, evt.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    HasUpdatedContent = true;
+                }
+
+                Controls.Remove(infoPanel);
+                infoPanel.Dispose();
+            };
+            worker.RunWorkerAsync(chart);
+        }
+
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            chart["name"] = txtName.Text;
+            chart["description"] = txtDescription.Text;
+            chart["datadescription"] = tecDataDescription.Text;
+            chart["presentationdescription"] = tecVisualizationDescription.Text;
+
+
+            infoPanel = InformationPanel.GetInformationPanel(this, "Updating chart...", 350, 150);
+
+            var worker = new BackgroundWorker { WorkerReportsProgress = true };
+            worker.DoWork += (w, evt) =>
+            {
+                service.Update((Entity)evt.Argument);
+            };
+            worker.ProgressChanged += (w, evt) =>
+            {
+                InformationPanel.ChangeInformationPanelMessage(infoPanel, evt.UserState.ToString());
+            };
+            worker.RunWorkerCompleted += (w, evt) =>
+            {
+                if (evt.Error != null)
+                {
+                    MessageBox.Show(this, evt.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    HasUpdatedContent = true;
+                }
+
+                Controls.Remove(infoPanel);
+                infoPanel.Dispose();
+            };
+            worker.RunWorkerAsync(chart);
+        }
+
+        private void buttonSaveAs_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            Entity newchart = chart;
+            string newChartName = ITLec.CRMChartGuy.AppCode.Common.ShowDialog("New Chart Name:", "Chart Name", txtName.Text+" - COPY");
+
+            if (!string.IsNullOrEmpty(newChartName))
+            {
+                newchart["name"] = newChartName;
+                newchart["description"] = txtDescription.Text;
+                newchart["datadescription"] = tecDataDescription.Text;
+                newchart["presentationdescription"] = tecVisualizationDescription.Text;
+
+                newchart.Id = Guid.NewGuid();
+
+                if (newchart.Attributes.Contains("savedqueryvisualizationid"))
+                {
+                    newchart["savedqueryvisualizationid"] = newchart.Id;
+                }
+                else
+                {
+                    newchart["userqueryvisualizationid"] = newchart.Id;
+                }
+
+                infoPanel = InformationPanel.GetInformationPanel(this, "Save As chart...", 350, 150);
+
+                var worker = new BackgroundWorker { WorkerReportsProgress = true };
+                worker.DoWork += (w, evt) =>
+                {
+                    service.Create((Entity)evt.Argument);
+                };
+                worker.ProgressChanged += (w, evt) =>
+                {
+                    InformationPanel.ChangeInformationPanelMessage(infoPanel, evt.UserState.ToString());
+                };
+                worker.RunWorkerCompleted += (w, evt) =>
+                {
+                    if (evt.Error != null)
+                    {
+                        MessageBox.Show(this, evt.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        HasUpdatedContent = true;
+                    }
+
+                    Controls.Remove(infoPanel);
+                    infoPanel.Dispose();
+                    this.Close();
+                };
+                worker.RunWorkerAsync(newchart);
+            }
+        }
+
+        private void buttonDeleteChart_Click(object sender, EventArgs e)
+        {
+
+            var confirmResult = MessageBox.Show("Are you sure to delete this chart ??",
+                                     "Confirm Delete!!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+
+                infoPanel = InformationPanel.GetInformationPanel(this, "Deleting chart...", 350, 150);
+
+                var worker = new BackgroundWorker { WorkerReportsProgress = true };
+                worker.DoWork += (w, evt) =>
+                {
+                    service.Delete(((Entity)evt.Argument).LogicalName, ((Entity)evt.Argument).Id);
+                };
+                worker.ProgressChanged += (w, evt) =>
+                {
+                    InformationPanel.ChangeInformationPanelMessage(infoPanel, evt.UserState.ToString());
+                };
+                worker.RunWorkerCompleted += (w, evt) =>
+                {
+                    if (evt.Error != null)
+                    {
+                        MessageBox.Show(this, evt.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        HasUpdatedContent = true;
+                    }
+
+                    Controls.Remove(infoPanel);
+                    infoPanel.Dispose();
+
+                    this.Close();
+                };
+                worker.RunWorkerAsync(chart);
             }
         }
     }

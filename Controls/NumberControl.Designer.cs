@@ -31,6 +31,7 @@
             this.lblNumber = new System.Windows.Forms.Label();
             this.numericUpDownNumber = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelHelp = new System.Windows.Forms.Panel();
             this.checkBoxIgnoreSaving = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNumber)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -42,7 +43,7 @@
             this.lblNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNumber.Location = new System.Drawing.Point(3, 0);
             this.lblNumber.Name = "lblNumber";
-            this.lblNumber.Size = new System.Drawing.Size(174, 45);
+            this.lblNumber.Size = new System.Drawing.Size(144, 45);
             this.lblNumber.TabIndex = 0;
             this.lblNumber.Text = "Number";
             // 
@@ -74,13 +75,15 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.panelHelp, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNumber, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDownNumber, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.numericUpDownNumber, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,6 +91,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(601, 45);
             this.tableLayoutPanel1.TabIndex = 88;
+            // 
+            // panelHelp
+            // 
+            this.panelHelp.BackgroundImage = global::ITLecChartGuy.AdvancedChartEditor.Properties.Resources.helpIcon;
+            this.panelHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelHelp.Location = new System.Drawing.Point(153, 3);
+            this.panelHelp.Name = "panelHelp";
+            this.panelHelp.Size = new System.Drawing.Size(20, 20);
+            this.panelHelp.TabIndex = 83;
+            this.panelHelp.Visible = false;
+            this.panelHelp.Click += new System.EventHandler(this.panelHelp_Click);
             // 
             // checkBoxIgnoreSaving
             // 
@@ -121,5 +135,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownNumber;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBoxIgnoreSaving;
+        private System.Windows.Forms.Panel panelHelp;
     }
 }

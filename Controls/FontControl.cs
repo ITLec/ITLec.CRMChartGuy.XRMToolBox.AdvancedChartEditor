@@ -119,5 +119,25 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             }
 
         }
+        
+
+
+        protected override void SetDesc(string desc)
+        {
+            if (!string.IsNullOrEmpty(desc))
+            {
+                panelHelp.Visible = true;
+            ControlToolTip.SetToolTip(lblFontType, desc);
+            ControlToolTip.SetToolTip(lblFontSize, desc);
+                ControlToolTip.SetToolTip(panelHelp, desc);
+
+            }
+        }
+
+
+        private void panelHelp_Click(object sender, EventArgs e)
+        {
+            ControlToolTip.Show(this.Desc, panelHelp);
+        }
     }
 }

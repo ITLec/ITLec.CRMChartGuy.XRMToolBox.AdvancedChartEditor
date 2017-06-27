@@ -12,7 +12,16 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
        public  BaseChartControl()
         {
-          //  IsNull = true;
+            //  IsNull = true;
+            ControlToolTip = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            ControlToolTip.AutoPopDelay = 5000;
+            ControlToolTip.InitialDelay = 1000;
+            ControlToolTip.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            ControlToolTip.ShowAlways = true;
+
         }
         public string InitValue = "";
 
@@ -30,6 +39,13 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
                 return isNull;
             }
         }*/
+
+
+            public ToolTip ControlToolTip
+        {
+            get;
+            set;
+        }
 
         public string Value
         {
@@ -57,6 +73,20 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             }
         }
 
+        private string desc;
+        public string Desc
+        {
+            get
+            {
+                return desc;
+            }
+            set
+            {
+                desc = value;
+                SetDesc(value);
+            }
+        }
+
         public bool IsIgnoreSave
         {
 
@@ -80,5 +110,18 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         protected abstract string GetLabel();
         protected abstract void FillControls();
         protected abstract bool GetIsIgnoreSave();
+
+
+        protected abstract void SetDesc(string desc);
+        
+        public ITLec.CRMChartGuy.Property CurrentProperty
+        {
+            get
+            {
+               var retVal =  new ITLec.CRMChartGuy.Property() {/*DefaultValue = this.InitValue,*/ Desc=this.Desc, DisplayName=this.Label, Name= this.Key, Value = this.Value};
+
+                return retVal;
+            }
+        }
     }
 }

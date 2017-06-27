@@ -30,6 +30,7 @@
         {
             this.groupBoxFont = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelHelp = new System.Windows.Forms.Panel();
             this.lblFontType = new System.Windows.Forms.Label();
             this.numericUpDownFontSize = new System.Windows.Forms.NumericUpDown();
             this.comboBoxFontType = new System.Windows.Forms.ComboBox();
@@ -53,15 +54,17 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.panelHelp, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblFontType, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDownFontSize, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.comboBoxFontType, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.numericUpDownFontSize, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxFontType, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFontSize, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -71,6 +74,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(602, 73);
             this.tableLayoutPanel1.TabIndex = 90;
             // 
+            // panelHelp
+            // 
+            this.panelHelp.BackgroundImage = global::ITLecChartGuy.AdvancedChartEditor.Properties.Resources.helpIcon;
+            this.panelHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelHelp.Location = new System.Drawing.Point(153, 39);
+            this.panelHelp.Name = "panelHelp";
+            this.panelHelp.Size = new System.Drawing.Size(20, 20);
+            this.panelHelp.TabIndex = 90;
+            this.panelHelp.Visible = false;
+            this.panelHelp.Click += new System.EventHandler(this.panelHelp_Click);
+            // 
             // lblFontType
             // 
             this.lblFontType.AutoSize = true;
@@ -79,7 +93,7 @@
             this.lblFontType.Location = new System.Drawing.Point(4, 0);
             this.lblFontType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFontType.Name = "lblFontType";
-            this.lblFontType.Size = new System.Drawing.Size(172, 36);
+            this.lblFontType.Size = new System.Drawing.Size(142, 36);
             this.lblFontType.TabIndex = 85;
             this.lblFontType.Text = "Font Type";
             // 
@@ -122,7 +136,7 @@
             this.lblFontSize.Location = new System.Drawing.Point(4, 36);
             this.lblFontSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFontSize.Name = "lblFontSize";
-            this.lblFontSize.Size = new System.Drawing.Size(172, 37);
+            this.lblFontSize.Size = new System.Drawing.Size(142, 37);
             this.lblFontSize.TabIndex = 87;
             this.lblFontSize.Text = "Font Size (px)";
             // 
@@ -162,5 +176,6 @@
         private System.Windows.Forms.Label lblFontSize;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBoxIgnoreSaving;
+        private System.Windows.Forms.Panel panelHelp;
     }
 }

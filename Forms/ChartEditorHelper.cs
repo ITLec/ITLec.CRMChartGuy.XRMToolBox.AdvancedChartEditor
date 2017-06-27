@@ -50,10 +50,30 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
         }
         private void DisplayChart()
         {
-            XmlNode siteMapXmlNode = siteMapDoc.DocumentElement;
+            XmlNode chartEditorXmlNode = siteMapDoc.DocumentElement;
             tvSiteMap.Nodes.Clear();
 
-            TreeNodeHelper.AddTreeViewNode(tvSiteMap, siteMapXmlNode, this);
+            bool addAnotationsNode = true;
+            //Add Annotation
+            foreach (XmlNode node in chartEditorXmlNode.ChildNodes)
+            {
+                if(node.Name.ToLower() == "annotations")
+                {
+                    addAnotationsNode = false;
+                }
+            }
+
+            if(addAnotationsNode)
+            {
+
+                XmlNode annotationNode = siteMapDoc.CreateElement("Annotations");
+                XmlNode textAnnotation = siteMapDoc.CreateElement("TextAnnotation");
+                annotationNode.AppendChild(textAnnotation);
+
+                chartEditorXmlNode.AppendChild(annotationNode);
+            }
+
+            TreeNodeHelper.AddTreeViewNode(tvSiteMap, chartEditorXmlNode, this);
 
           //  ManageMenuDisplay();
             tvSiteMap.Nodes[0].Expand();
@@ -71,7 +91,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             {
                 if (e.AttributeCollection.ContainsKey("ChartType"))
                 {
-                    ChartType = e.AttributeCollection["ChartType"];
+                    ChartType = e.AttributeCollection["ChartType"].Value;
                 }
             }
 
@@ -90,7 +110,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
         {
             TreeNode selectedNode = e.Node;
             selectedNode.TreeView.SelectedNode = selectedNode;
-            var collec = (Dictionary<string, string>)selectedNode.Tag;
+            var collec = (Dictionary<string, ITLec.CRMChartGuy.Property>)selectedNode.Tag;
 
             TreeNodeHelper.AddContextMenu(e.Node, this);
             Control existingControl = panelContainer.Controls.Count > 0 ? panelContainer.Controls[0] : null;
@@ -110,39 +130,6 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             string fullNodeName = TreeNodeHelper.FullNodeName(selectedNode);
 
             ctrl = new ITLecChartGuy.AdvancedChartEditor.Controls.MainChartSectionControl(fullNodeName, collec);
-            /*
-            string nodeName = selectedNode.Text.Split(' ')[0];
-            switch (nodeName)
-            {//selectedNode.Parent.Text
-                case "Series":
-                    {
-                        if (selectedNode.Parent.Text.Split(' ')[0] == "Series")
-                        {
-                             ctrl = new MainChartSectionControl(nodeName, collec);
-
-                        }
-                        else
-                        {
-                            panelContainer.Controls.Clear();
-                            tsbItemSave.Visible = false;
-                        }
-                    }
-                    break;
-                case "ChartAreas":
-                case "Titles":
-                    {
-                        panelContainer.Controls.Clear();
-                        tsbItemSave.Visible = false;
-
-                    }
-                    break;
-                default:
-                    {
-                        ctrl = new ITLecChartGuy.AdvancedChartEditor.Controls.MainChartSectionControl(nodeName, collec);
-                    }
-                    break;
-            }
-            */
             if (ctrl != null)
             {
                 ctrl.Saving += CtrlSaving;
@@ -208,11 +195,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
                 AddXmlNode(tvSiteMap.Nodes[0], rootNode);
 
                 
-
-                /*if (siteMap != null)
-                {
-                    siteMap["sitemapxml"] = doc.SelectSingleNode("SiteMap/SiteMap").OuterXml;
-                }*/
+                
                 MessageBox.Show(doc.SelectSingleNode("chart").OuterXml);
                 siteMapDoc.LoadXml(doc.SelectSingleNode("chart").OuterXml);
 
@@ -244,7 +227,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             }
 
             newNodeName = currentNode.Text.Split(' ')[0];
-            var collec = (Dictionary<string, string>)currentNode.Tag;
+            var collec = (Dictionary<string, ITLec.CRMChartGuy.Property>)currentNode.Tag;
            // string newNodeFullName = TreeNodeHelper.FullNodeName(currentNode);
             if (newNodeName == "CustomProperties")
             {
@@ -261,7 +244,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
                     if (key != "_disabled")
                     {
                         XmlAttribute attr = parentXmlNode.OwnerDocument.CreateAttribute(key);
-                        attr.Value = collec[key];
+                        attr.Value = collec[key].Value;
 
                         newNode.Attributes.Append(attr);
                     }
@@ -300,13 +283,13 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             }
         }
 
-        private void AppendCustomProperties(XmlNode parentXmlNode, Dictionary<string, string> collec)
+        private void AppendCustomProperties(XmlNode parentXmlNode, Dictionary<string, ITLec.CRMChartGuy.Property> collec)
         {
             string customPropertiesStr = "";
 
             foreach (string key in collec.Keys)
             {
-                customPropertiesStr = string.Format("{0}={1}{2}", key, collec[key], (string.IsNullOrEmpty(customPropertiesStr) ? "" : "," + customPropertiesStr));
+                customPropertiesStr = string.Format("{0}={1}{2}", key, collec[key].Value, (string.IsNullOrEmpty(customPropertiesStr) ? "" : "," + customPropertiesStr));
                 
             }
 

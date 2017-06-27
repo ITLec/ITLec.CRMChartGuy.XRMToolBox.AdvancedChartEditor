@@ -25,15 +25,15 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         public event SaveEventHandler Saved;
 
         #endregion*/
-        private readonly Dictionary<string, string> collec;
+        private readonly Dictionary<string, ITLec.CRMChartGuy.Property> collec;
 
         public SeriesControl()
         {
             InitializeComponent();
-            collec = new Dictionary<string, string>();
+            collec = new Dictionary<string, ITLec.CRMChartGuy.Property>();
         }
 
-        public SeriesControl(Dictionary<string, string> collection)
+        public SeriesControl(Dictionary<string, ITLec.CRMChartGuy.Property> collection)
             : this()
         {
             if (collection != null)
@@ -58,7 +58,8 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             {
               if(  sections.Properties.Where(e => e.Name == item.Key).Count() == 0)
                 {
-                    AddDictionaryKeyControl("Text", item.Key, item.Value);
+                    
+                    AddDictionaryKeyControl(item.Value);
                 }
             }
 

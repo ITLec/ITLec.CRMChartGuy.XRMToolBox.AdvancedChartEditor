@@ -63,7 +63,22 @@ namespace ITLec.CRMChartGuy
             get;
             set;
         }
+        public string DisplayName
+        {
+            get;
+            set;
+        }
         public string Type
+        {
+            get;
+            set;
+        }
+        public string Desc
+        {
+            get;
+            set;
+        }
+        public string Value
         {
             get;
             set;

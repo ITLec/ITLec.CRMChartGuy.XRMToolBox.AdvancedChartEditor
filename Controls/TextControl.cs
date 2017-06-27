@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
-    public partial class TextControl : BaseChartControl// UserControl//
+    public partial class TextControl :BaseChartControl// UserControl// 
     {
         public TextControl()
         {
@@ -63,6 +63,23 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         private void txtText_TextChanged(object sender, EventArgs e)
         {
             checkBoxIgnoreSaving.Visible = true;
+        }
+
+
+        protected override void SetDesc(string desc)
+        {
+            if (!string.IsNullOrEmpty(desc))
+            {
+                panelHelp.Visible = true;
+                ControlToolTip.SetToolTip(lblLabel, desc);
+                ControlToolTip.SetToolTip(panelHelp, desc);
+
+            }
+        }
+
+        private void panelHelp_Click(object sender, EventArgs e)
+        {
+            ControlToolTip.Show(this.Desc, panelHelp);
         }
     }
 }

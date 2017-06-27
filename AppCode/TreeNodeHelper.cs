@@ -22,7 +22,7 @@ namespace ITLec.CRMChartGuy.AppCode
         /// <param name="form">Current application form</param>
         public static void AddContextMenu(TreeNode node, ChartEditorHelper form)
         {
-            var collec = (Dictionary<string, string>)node.Tag;
+            var collec = (Dictionary<string, ITLec.CRMChartGuy.Property>)node.Tag;
 
             HideAllContextMenuItems(form.nodeMenu);
 
@@ -60,7 +60,7 @@ namespace ITLec.CRMChartGuy.AppCode
         {
             TreeNode node = new TreeNode(xmlNode.Name);
 
-            Dictionary<string, string> attributes = new Dictionary<string, string>();
+            Dictionary<string, ITLec.CRMChartGuy.Property> attributes = new Dictionary<string,  ITLec.CRMChartGuy.Property>();
 
             if (xmlNode.NodeType != XmlNodeType.Text)
             {
@@ -69,7 +69,7 @@ namespace ITLec.CRMChartGuy.AppCode
                     if (attr.Name == "CustomProperties")
                     {
                         TreeNode customNode = new TreeNode("CustomProperties");
-                        Dictionary <string, string> customAttributes = new Dictionary<string, string>();
+                        Dictionary <string, ITLec.CRMChartGuy.Property> customAttributes = new Dictionary<string, ITLec.CRMChartGuy.Property>();
 
                         string[] propertyItems = attr.Value.Replace(" ","").Split(',');
 
@@ -80,7 +80,10 @@ namespace ITLec.CRMChartGuy.AppCode
                                 string[] propertyItemStrs = propertyItem.Split('=');
                                 string propertyItemKey = propertyItemStrs[0];
                                 string propertyItemValue = propertyItemStrs[1];
-                                customAttributes.Add(propertyItemKey, propertyItemValue);
+
+                                ITLec.CRMChartGuy.Property pro = new Property() { Value = propertyItemValue, Name = propertyItemKey };
+
+                                customAttributes.Add(propertyItemKey, pro);
                             }
                         }
                         customNode.Tag = customAttributes;
@@ -88,7 +91,8 @@ namespace ITLec.CRMChartGuy.AppCode
                     }
                     else
                     {
-                        attributes.Add(attr.Name, attr.Value);
+                        ITLec.CRMChartGuy.Property pro = new Property() {Value= attr.Value, Name = attr.Name};
+                        attributes.Add(attr.Name, pro);
                     }
                     if(attr.Name == "ChartType")
                     {
@@ -116,7 +120,7 @@ namespace ITLec.CRMChartGuy.AppCode
 
             node.Name = node.Text.Replace(" ", "");
 
-            if (isDisabled)
+         /*   if (isDisabled)
             {
                 if (node.Text.StartsWith("#"))
                 {
@@ -130,7 +134,7 @@ namespace ITLec.CRMChartGuy.AppCode
                     attributes.Add("_disabled", "true");
                 }
                 node.ForeColor = Color.Gray;
-            }
+            }*/
 
             node.Tag = attributes;
 

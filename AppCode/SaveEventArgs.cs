@@ -8,6 +8,6 @@ namespace ITLecChartGuy.AdvancedChartEditor.AppCode
 {
     public class SaveEventArgs : EventArgs
     {
-        public Dictionary<string, string> AttributeCollection { get; set; }
+        public Dictionary<string, ITLec.CRMChartGuy.Property> AttributeCollection { get; set; }
     }
 }

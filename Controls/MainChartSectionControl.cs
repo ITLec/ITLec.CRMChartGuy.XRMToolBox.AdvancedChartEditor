@@ -16,15 +16,15 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
     public partial class MainChartSectionControl : BaseMainChartUserControl, IChartSavable
     {
-        private readonly Dictionary<string, string> collec;
+        private readonly Dictionary<string, Property> collec;
 
         public MainChartSectionControl()
         {
             InitializeComponent();
-            collec = new Dictionary<string, string>();
+            collec = new Dictionary<string, Property>();
         }
 
-        public MainChartSectionControl(Dictionary<string, string> collection)
+        public MainChartSectionControl(Dictionary<string, Property> collection)
             : this()
         {
             if (collection != null)
@@ -33,7 +33,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             FillControls();
         }
 
-        public MainChartSectionControl(string nodeName, Dictionary<string, string> collec)
+        public MainChartSectionControl(string nodeName, Dictionary<string, Property> collec)
             : this()
         {
             this.NodeName = nodeName;
@@ -67,7 +67,8 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
             foreach (var item in collec)
             {
-                AddDictionaryKeyControl(Common.DetectChartElementType(item.Key, item.Value), item.Key, item.Value);
+                item.Value.Type = Common.DetectChartElementType(item.Key, item.Value.Value);
+                AddDictionaryKeyControl( item.Value);
             }
 
             int x = 0;
@@ -87,21 +88,19 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         public bool Save()
         {
 
-            Dictionary<string, string> collection = new Dictionary<string, string>();
+            Dictionary<string, ITLec.CRMChartGuy.Property> collection = new Dictionary<string, ITLec.CRMChartGuy.Property>();
 
             foreach (var dic in DictionaryKeyControl)
             {
                 if (
                     
                   (  collec.Keys.Contains(dic.Key) ||
-                    (!string.IsNullOrEmpty(dic.Value.Value) &&
-
-                    dic.Value.Value != dic.Value.InitValue)) &&
+                    (!string.IsNullOrEmpty(dic.Value.Value) )) &&
 
                    ! dic.Value.IsIgnoreSave
                     )
                 {
-                    collection.Add(dic.Key, dic.Value.Value);
+                    collection.Add(dic.Key, dic.Value.CurrentProperty);
                 }
             }
 
@@ -112,7 +111,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
         #region Send Events
 
-        private void SendSaveMessage(Dictionary<string, string> collection)
+        private void SendSaveMessage(Dictionary<string, ITLec.CRMChartGuy.Property> collection)
         {
             SaveEventArgs sea = new SaveEventArgs { AttributeCollection = collection };
             OnSaving(this, sea);

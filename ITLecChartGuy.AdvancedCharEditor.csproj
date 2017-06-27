@@ -154,12 +154,6 @@
     <Compile Include="Controls\NumberControl.Designer.cs">
       <DependentUpon>NumberControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SeriesControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SeriesControl.Designer.cs">
-      <DependentUpon>SeriesControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TextControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,9 +224,6 @@
     <EmbeddedResource Include="Controls\NumberControl.resx">
       <DependentUpon>NumberControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SeriesControl.resx">
-      <DependentUpon>SeriesControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextControl.resx">
       <DependentUpon>TextControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,7 +254,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\helpIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
@@ -271,7 +264,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.YearStamp.MonthStamp.DayStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_ConfigurationName="Release" />
+      <UserProperties BuildVersion_ConfigurationName="Release" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.YearStamp.MonthStamp.DayStamp" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

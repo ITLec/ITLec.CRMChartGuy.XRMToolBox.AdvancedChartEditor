@@ -31,6 +31,7 @@
             this.lblColorLLabel = new System.Windows.Forms.Label();
             this.colorDialogSelector = new System.Windows.Forms.ColorDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelHelp = new System.Windows.Forms.Panel();
             this.panelColor = new System.Windows.Forms.Panel();
             this.lblClickToSelectColor = new System.Windows.Forms.Label();
             this.textBoxColor = new System.Windows.Forms.TextBox();
@@ -45,21 +46,23 @@
             this.lblColorLLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblColorLLabel.Location = new System.Drawing.Point(3, 0);
             this.lblColorLLabel.Name = "lblColorLLabel";
-            this.lblColorLLabel.Size = new System.Drawing.Size(172, 44);
+            this.lblColorLLabel.Size = new System.Drawing.Size(143, 44);
             this.lblColorLLabel.TabIndex = 1;
             this.lblColorLLabel.Text = "Color";
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.panelHelp, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblColorLLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panelColor, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxColor, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelColor, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxColor, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -67,6 +70,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(596, 44);
             this.tableLayoutPanel1.TabIndex = 90;
+            // 
+            // panelHelp
+            // 
+            this.panelHelp.BackgroundImage = global::ITLecChartGuy.AdvancedChartEditor.Properties.Resources.helpIcon;
+            this.panelHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelHelp.Location = new System.Drawing.Point(152, 3);
+            this.panelHelp.Name = "panelHelp";
+            this.panelHelp.Size = new System.Drawing.Size(20, 20);
+            this.panelHelp.TabIndex = 84;
+            this.panelHelp.Visible = false;
+            this.panelHelp.Click += new System.EventHandler(this.panelHelp_Click);
             // 
             // panelColor
             // 
@@ -133,5 +147,6 @@
         private System.Windows.Forms.TextBox textBoxColor;
         private System.Windows.Forms.Label lblClickToSelectColor;
         private System.Windows.Forms.CheckBox checkBoxIgnoreSaving;
+        private System.Windows.Forms.Panel panelHelp;
     }
 }

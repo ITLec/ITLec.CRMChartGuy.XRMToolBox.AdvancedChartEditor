@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
-    public partial class NumberControl :   BaseChartControl//UserControl//
+    public partial class NumberControl : BaseChartControl//  UserControl//
     {
         public NumberControl()
         {
@@ -61,12 +61,29 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
         protected override bool GetIsIgnoreSave()
         {
-            return checkBoxIgnoreSaving.Checked;
+            return checkBoxIgnoreSaving.Checked ||  (numericUpDownNumber.ForeColor != Color.Black);
         }
         private void numericUpDownNumber_ValueChanged(object sender, EventArgs e)
         {
             numericUpDownNumber.ForeColor = Color.Black;
             checkBoxIgnoreSaving.Visible = true;
+        }
+
+        protected override void SetDesc(string desc)
+        {
+            if (!string.IsNullOrEmpty(desc))
+            {
+                panelHelp.Visible = true;
+                ControlToolTip.SetToolTip(lblNumber, desc);
+                ControlToolTip.SetToolTip(panelHelp, desc);
+
+            }
+        }
+
+
+        private void panelHelp_Click(object sender, EventArgs e)
+        {
+            ControlToolTip.Show(this.Desc, panelHelp);
         }
     }
 }

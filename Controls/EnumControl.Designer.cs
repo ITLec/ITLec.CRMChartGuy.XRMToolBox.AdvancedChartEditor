@@ -31,6 +31,7 @@
             this.cmbEnum = new System.Windows.Forms.ComboBox();
             this.lblEnum = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelHelp = new System.Windows.Forms.Panel();
             this.checkBoxIgnoreSaving = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -39,7 +40,7 @@
             // 
             this.cmbEnum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbEnum.FormattingEnabled = true;
-            this.cmbEnum.Location = new System.Drawing.Point(182, 3);
+            this.cmbEnum.Location = new System.Drawing.Point(181, 3);
             this.cmbEnum.Name = "cmbEnum";
             this.cmbEnum.Size = new System.Drawing.Size(293, 24);
             this.cmbEnum.TabIndex = 82;
@@ -53,19 +54,21 @@
             this.lblEnum.Location = new System.Drawing.Point(4, 0);
             this.lblEnum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnum.Name = "lblEnum";
-            this.lblEnum.Size = new System.Drawing.Size(171, 37);
+            this.lblEnum.Size = new System.Drawing.Size(141, 37);
             this.lblEnum.TabIndex = 81;
             this.lblEnum.Text = "Enum Name";
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.panelHelp, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblEnum, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbEnum, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbEnum, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxIgnoreSaving, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -74,13 +77,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(598, 37);
             this.tableLayoutPanel1.TabIndex = 90;
             // 
+            // panelHelp
+            // 
+            this.panelHelp.BackgroundImage = global::ITLecChartGuy.AdvancedChartEditor.Properties.Resources.helpIcon;
+            this.panelHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelHelp.Location = new System.Drawing.Point(152, 3);
+            this.panelHelp.Name = "panelHelp";
+            this.panelHelp.Size = new System.Drawing.Size(20, 20);
+            this.panelHelp.TabIndex = 84;
+            this.panelHelp.Visible = false;
+            this.panelHelp.Click += new System.EventHandler(this.panelHelp_Click);
+            // 
             // checkBoxIgnoreSaving
             // 
             this.checkBoxIgnoreSaving.AutoSize = true;
             this.checkBoxIgnoreSaving.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxIgnoreSaving.Location = new System.Drawing.Point(481, 3);
+            this.checkBoxIgnoreSaving.Location = new System.Drawing.Point(480, 3);
             this.checkBoxIgnoreSaving.Name = "checkBoxIgnoreSaving";
-            this.checkBoxIgnoreSaving.Size = new System.Drawing.Size(114, 31);
+            this.checkBoxIgnoreSaving.Size = new System.Drawing.Size(115, 31);
             this.checkBoxIgnoreSaving.TabIndex = 83;
             this.checkBoxIgnoreSaving.Text = "Remove";
             this.checkBoxIgnoreSaving.UseVisualStyleBackColor = true;
@@ -106,5 +120,6 @@
         private System.Windows.Forms.Label lblEnum;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBoxIgnoreSaving;
+        private System.Windows.Forms.Panel panelHelp;
     }
 }

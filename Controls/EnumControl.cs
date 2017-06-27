@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
-    public partial class EnumControl :BaseChartControl//UserControl// 
+    public partial class EnumControl : BaseChartControl//UserControl//
     {
         string currentNodeName;
         string _enumType;
@@ -124,6 +124,23 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
         {
 
             cmbEnum.SelectionLength = 0;
+        }
+
+        protected override void SetDesc(string desc)
+        {
+            if (!string.IsNullOrEmpty(desc))
+            {
+                panelHelp.Visible = true;
+                ControlToolTip.SetToolTip(lblEnum, desc);
+                ControlToolTip.SetToolTip(panelHelp, desc);
+
+            }
+        }
+
+
+        private void panelHelp_Click(object sender, EventArgs e)
+        {
+            ControlToolTip.Show(this.Desc, panelHelp);
         }
     }
 }
