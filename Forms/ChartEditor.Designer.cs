@@ -31,6 +31,9 @@
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonDeleteChart = new System.Windows.Forms.Button();
+            this.buttonSaveAs = new System.Windows.Forms.Button();
+            this.btnUpdatePublish = new System.Windows.Forms.Button();
             this.btnlVisualEditor = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -43,9 +46,8 @@
             this.tecDataDescription = new ICSharpCode.TextEditor.TextEditorControl();
             this.lblVisualizationDescription = new System.Windows.Forms.Label();
             this.tecVisualizationDescription = new ICSharpCode.TextEditor.TextEditorControl();
-            this.btnUpdatePublish = new System.Windows.Forms.Button();
-            this.buttonSaveAs = new System.Windows.Forms.Button();
-            this.buttonDeleteChart = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtChartType = new System.Windows.Forms.TextBox();
             this.pnlTitle.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -62,7 +64,7 @@
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(940, 80);
+            this.pnlTitle.Size = new System.Drawing.Size(940, 56);
             this.pnlTitle.TabIndex = 0;
             // 
             // label1
@@ -89,6 +91,42 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(940, 41);
             this.panel2.TabIndex = 1;
+            // 
+            // buttonDeleteChart
+            // 
+            this.buttonDeleteChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteChart.Location = new System.Drawing.Point(524, 4);
+            this.buttonDeleteChart.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDeleteChart.Name = "buttonDeleteChart";
+            this.buttonDeleteChart.Size = new System.Drawing.Size(128, 28);
+            this.buttonDeleteChart.TabIndex = 10;
+            this.buttonDeleteChart.Text = "Delete Chart";
+            this.buttonDeleteChart.UseVisualStyleBackColor = true;
+            this.buttonDeleteChart.Click += new System.EventHandler(this.buttonDeleteChart_Click);
+            // 
+            // buttonSaveAs
+            // 
+            this.buttonSaveAs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSaveAs.Location = new System.Drawing.Point(679, 4);
+            this.buttonSaveAs.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSaveAs.Name = "buttonSaveAs";
+            this.buttonSaveAs.Size = new System.Drawing.Size(128, 28);
+            this.buttonSaveAs.TabIndex = 9;
+            this.buttonSaveAs.Text = "Save As";
+            this.buttonSaveAs.UseVisualStyleBackColor = true;
+            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
+            // 
+            // btnUpdatePublish
+            // 
+            this.btnUpdatePublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdatePublish.Location = new System.Drawing.Point(369, 4);
+            this.btnUpdatePublish.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdatePublish.Name = "btnUpdatePublish";
+            this.btnUpdatePublish.Size = new System.Drawing.Size(128, 28);
+            this.btnUpdatePublish.TabIndex = 8;
+            this.btnUpdatePublish.Text = "Update && Publish";
+            this.btnUpdatePublish.UseVisualStyleBackColor = true;
+            this.btnUpdatePublish.Click += new System.EventHandler(this.btnUpdatePublish_Click);
             // 
             // btnlVisualEditor
             // 
@@ -130,7 +168,7 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(141, 85);
+            this.txtName.Location = new System.Drawing.Point(141, 62);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(789, 22);
@@ -149,7 +187,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(11, 87);
+            this.lblName.Location = new System.Drawing.Point(11, 64);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(45, 17);
             this.lblName.TabIndex = 4;
@@ -227,50 +265,36 @@
             this.tecVisualizationDescription.Location = new System.Drawing.Point(141, -1);
             this.tecVisualizationDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tecVisualizationDescription.Name = "tecVisualizationDescription";
-            this.tecVisualizationDescription.Size = new System.Drawing.Size(788, 247);
+            this.tecVisualizationDescription.Size = new System.Drawing.Size(788, 248);
             this.tecVisualizationDescription.TabIndex = 7;
             // 
-            // btnUpdatePublish
+            // label2
             // 
-            this.btnUpdatePublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdatePublish.Location = new System.Drawing.Point(369, 4);
-            this.btnUpdatePublish.Margin = new System.Windows.Forms.Padding(4);
-            this.btnUpdatePublish.Name = "btnUpdatePublish";
-            this.btnUpdatePublish.Size = new System.Drawing.Size(128, 28);
-            this.btnUpdatePublish.TabIndex = 8;
-            this.btnUpdatePublish.Text = "Update && Publish";
-            this.btnUpdatePublish.UseVisualStyleBackColor = true;
-            this.btnUpdatePublish.Click += new System.EventHandler(this.btnUpdatePublish_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 17);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Type";
             // 
-            // buttonSaveAs
+            // txtChartType
             // 
-            this.buttonSaveAs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSaveAs.Location = new System.Drawing.Point(679, 4);
-            this.buttonSaveAs.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSaveAs.Name = "buttonSaveAs";
-            this.buttonSaveAs.Size = new System.Drawing.Size(128, 28);
-            this.buttonSaveAs.TabIndex = 9;
-            this.buttonSaveAs.Text = "Save As";
-            this.buttonSaveAs.UseVisualStyleBackColor = true;
-            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
-            // 
-            // buttonDeleteChart
-            // 
-            this.buttonDeleteChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteChart.Location = new System.Drawing.Point(524, 4);
-            this.buttonDeleteChart.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonDeleteChart.Name = "buttonDeleteChart";
-            this.buttonDeleteChart.Size = new System.Drawing.Size(128, 28);
-            this.buttonDeleteChart.TabIndex = 10;
-            this.buttonDeleteChart.Text = "Delete Chart";
-            this.buttonDeleteChart.UseVisualStyleBackColor = true;
-            this.buttonDeleteChart.Click += new System.EventHandler(this.buttonDeleteChart_Click);
+            this.txtChartType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtChartType.Enabled = false;
+            this.txtChartType.Location = new System.Drawing.Point(141, 86);
+            this.txtChartType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChartType.Name = "txtChartType";
+            this.txtChartType.Size = new System.Drawing.Size(789, 22);
+            this.txtChartType.TabIndex = 7;
             // 
             // ChartEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 673);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtChartType);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.lblName);
@@ -319,5 +343,7 @@
         private System.Windows.Forms.Button btnUpdatePublish;
         private System.Windows.Forms.Button buttonSaveAs;
         private System.Windows.Forms.Button buttonDeleteChart;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtChartType;
     }
 }

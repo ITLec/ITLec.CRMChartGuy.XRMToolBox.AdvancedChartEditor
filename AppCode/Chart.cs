@@ -28,8 +28,21 @@ namespace ITLec.CRMChartGuy
             set;
         }
         public List<Property> Properties = new List<Property>();
+
+
+        public List<SubSection> SubSections = new List<SubSection>();
     }
-    public class CustomProperties
+
+
+    public class SubSection
+    {
+        public string Name
+        {
+            get;
+            set;
+        }
+    }
+        public class CustomProperties
     {
         public string ChartType
         {
@@ -121,7 +134,8 @@ namespace ITLec.CRMChartGuy
     public class PropertyType
     {
         public  const string   TEXT = "text";
-        public  const string NUMBER = "number";
+        public const string NUMBER = "number";
+        //public const string Decimal = "decimal";
         public  const string COLOR = "color";
         public  const string FONT = "font";
         public const string ENUM = "enum";

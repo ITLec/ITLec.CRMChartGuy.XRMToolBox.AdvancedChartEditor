@@ -61,7 +61,6 @@ public  class BaseMainChartUserControl :  UserControl
 
         public void AddDictionaryKeyControl(Property property, Dictionary<string, Property> collec)
         {
-
     //        var val = property.DefaultValue;
 
             if (collec.ContainsKey(property.Name)
@@ -98,7 +97,8 @@ public  class BaseMainChartUserControl :  UserControl
                         obj = new TextControl();
                         break;
                     case PropertyType.NUMBER:
-                        obj = new NumberControl();
+                        string param = (strs.Length ==1) ? "" : strs[1];
+                        obj = new NumberControl(param);
                         break;
                     case PropertyType.COLOR:
                         obj = new ColorControl();

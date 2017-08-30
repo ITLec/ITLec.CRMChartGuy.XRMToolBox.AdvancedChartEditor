@@ -12,16 +12,69 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 {
     public partial class NumberControl : BaseChartControl//  UserControl//
     {
-        public NumberControl()
+        //{Min=1,Max=20,DecimalPlaces=1,Increment=.1}
+        public NumberControl(string args)
         {
             InitializeComponent();
 
-            //if (!string.IsNullOrEmpty(base.InitValue))
-            //{
-            //    SetValue(base.InitValue);
-            //}
+            if (!string.IsNullOrEmpty(args))
+            {
+                string[] arrArg = args.ToLower().Replace("{", "").Replace("}", "").Split(',');
 
-            //InitValue = Value;
+                if (arrArg.Length > 0)
+                {
+                    Dictionary<string, string> dic = new Dictionary<string, string>();
+
+                    foreach (string str in arrArg)
+                    {
+                        if (str.Contains("="))
+                        {
+                            string[] strs = str.Split('=');
+
+                            if (!string.IsNullOrEmpty(strs[0]) && !string.IsNullOrEmpty(strs[1]))
+                            {
+                                dic.Add(strs[0], strs[1]);
+                            }
+                        }
+                    }
+
+                    if (dic.ContainsKey("min"))
+                    {
+                        int minimun = 0;
+                        if (int.TryParse(dic["min"], out minimun))
+                        {
+                            numericUpDownNumber.Minimum = minimun;
+                        }
+                    }
+
+                    if (dic.ContainsKey("max"))
+                    {
+                        int max = 0;
+                        if (int.TryParse(dic["max"], out max))
+                        {
+                            numericUpDownNumber.Maximum = max;
+                        }
+                    }
+
+                    if (dic.ContainsKey("decimalplaces"))
+                    {
+                        int decimalplaces = 0;
+                        if (int.TryParse(dic["decimalplaces"], out decimalplaces))
+                        {
+                            numericUpDownNumber.DecimalPlaces = decimalplaces;
+                        }
+                    }
+
+                    if (dic.ContainsKey("increment"))
+                    {
+                        int increment = 0;
+                        if (int.TryParse(dic["increment"], out increment))
+                        {
+                            numericUpDownNumber.Increment = increment;
+                        }
+                    }
+                }
+            }
         }
 
         protected override void FillControls()

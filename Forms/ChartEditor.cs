@@ -42,6 +42,19 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             tecVisualizationDescription.SetHighlighting("XML");
             
             Size = new Size(Size.Width + 1, Size.Height);
+
+
+            
+            bool isSystemChart = true;
+            if (chart.Attributes.Contains("userqueryvisualizationid"))
+            {
+                isSystemChart = false;
+            }
+
+            btnUpdatePublish.Visible = isSystemChart;
+            btnUpdate.Visible = !isSystemChart;
+
+            txtChartType.Text = isSystemChart ? "System" : "User";
         }
 
 

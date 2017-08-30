@@ -25,6 +25,61 @@ namespace ITLec.CRMChartGuy.AppCode
             var collec = (Dictionary<string, ITLec.CRMChartGuy.Property>)node.Tag;
 
             HideAllContextMenuItems(form.nodeMenu);
+            string nodeFullName = TreeNodeHelper.FullNodeName(node);
+            ///////////////////////////
+           var currentSection = Common.ChartStructure.Sections.Where(e => e.Name == nodeFullName).FirstOrDefault();
+
+            if (currentSection != null)
+            {
+                var subSections = currentSection.SubSections;
+                foreach (var subSection in subSections)
+                {
+                    // node.
+                    XmlNode chartEditorXmlNode = form.siteMapDoc.DocumentElement;
+                    bool existedSubSection = true;
+                    //Add Annotation
+                    foreach (XmlNode _node in chartEditorXmlNode.ChildNodes)
+                    {
+                        if (_node.Name.ToLower() == subSection.Name)
+                        {
+                            existedSubSection = false;
+                            break;
+                        }
+                    }
+                    if (existedSubSection)
+                    {
+                        ToolStripItem tsi = new ToolStripMenuItem(subSection.Name);
+                        tsi.Name = subSection.Name;
+                        ////  tsi.Click += Tsi_Click;
+
+                        tsi.Click += delegate (object sender, EventArgs e)
+                        {
+                            subSectionMenuOnClick(sender, e, node);
+                        };
+
+                        form.nodeMenu.Items.Add(tsi);
+                        //form.nodeMenu.Items.Add(subSection.Name, null, delegate (object sender, EventArgs e)
+                        //{
+                        //    subSectionMenuOnClick(sender, e, node);
+                        //});
+                    }
+
+                    /*  if (addAnotationsNode)
+                      {
+
+                          XmlNode annotationNode = siteMapDoc.CreateElement("Annotations");
+                          XmlNode textAnnotation = siteMapDoc.CreateElement("TextAnnotation");
+                          annotationNode.AppendChild(textAnnotation);
+
+                          chartEditorXmlNode.AppendChild(annotationNode);
+                      }*/
+                }
+
+            }
+            ////////////////////////////////
+
+
+
 
             switch (node.Text.Split(' ')[0])
             {
@@ -48,6 +103,46 @@ namespace ITLec.CRMChartGuy.AppCode
 
             node.ContextMenuStrip = form.nodeMenu;
         }
+
+        private static void subSectionMenuOnClick(object sender, EventArgs eventArgs, TreeNode node)
+        {
+            var item = (ToolStripItem)sender;
+
+
+            string[] strs  = item.Name.Split('.');
+
+            string nodeName = strs[strs.Length - 1];
+
+            TreeNode subNode = new TreeNode(nodeName);
+
+            /*subNode.Tag*/ var section = Common.ChartStructure.Sections.Where(e => e.Name == item.Name).FirstOrDefault();
+
+            if (section != null)
+            {
+
+                var properties = section.Properties;
+                Dictionary<string, ITLec.CRMChartGuy.Property> arr = new Dictionary<string, Property>();
+
+
+                subNode.Tag = arr;
+                node.Nodes.Add(subNode);
+                /* if (addAnotationsNode)
+                 {
+
+                     XmlNode annotationNode = siteMapDoc.CreateElement("Annotations");
+                     XmlNode textAnnotation = siteMapDoc.CreateElement("TextAnnotation");
+                     annotationNode.AppendChild(textAnnotation);
+
+                     chartEditorXmlNode.AppendChild(annotationNode);
+                 }*/
+            }
+        }
+
+        private static void Tsi_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        
 
         /// <summary>
         /// Adds a new TreeNode to the parent object from the XmlNode information

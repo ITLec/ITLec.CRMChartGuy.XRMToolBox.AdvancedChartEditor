@@ -21,9 +21,11 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
     {
         public static string ChartType = "";
         private string strXmlLine;
-        internal AppCode.Clipboard clipboard = new AppCode.Clipboard();
 
-        private XmlDocument siteMapDoc;
+      //  internal AppCode.Clipboard clipboard = new AppCode.Clipboard();
+
+      //  private
+            public XmlDocument siteMapDoc;
 
         public string ChartXML { get; set; }
 
@@ -52,7 +54,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
         {
             XmlNode chartEditorXmlNode = siteMapDoc.DocumentElement;
             tvSiteMap.Nodes.Clear();
-
+            /* Add Annotation
             bool addAnotationsNode = true;
             //Add Annotation
             foreach (XmlNode node in chartEditorXmlNode.ChildNodes)
@@ -71,7 +73,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
                 annotationNode.AppendChild(textAnnotation);
 
                 chartEditorXmlNode.AppendChild(annotationNode);
-            }
+            }*/
 
             TreeNodeHelper.AddTreeViewNode(tvSiteMap, chartEditorXmlNode, this);
 
@@ -129,16 +131,19 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
 
             string fullNodeName = TreeNodeHelper.FullNodeName(selectedNode);
 
-            ctrl = new ITLecChartGuy.AdvancedChartEditor.Controls.MainChartSectionControl(fullNodeName, collec);
-            if (ctrl != null)
+            if (collec != null)
             {
-                ctrl.Saving += CtrlSaving;
-                ctrl.Dock = DockStyle.Fill;
+                ctrl = new ITLecChartGuy.AdvancedChartEditor.Controls.MainChartSectionControl(fullNodeName, collec);
+                if (ctrl != null)
+                {
+                    ctrl.Saving += CtrlSaving;
+                    ctrl.Dock = DockStyle.Fill;
 
-                panelContainer.Controls.Add(ctrl);
-                ctrl.BringToFront();
-                if (existingControl != null) panelContainer.Controls.Remove(existingControl);
-                tsbItemSave.Visible = true;
+                    panelContainer.Controls.Add(ctrl);
+                    ctrl.BringToFront();
+                    if (existingControl != null) panelContainer.Controls.Remove(existingControl);
+                    tsbItemSave.Visible = true;
+                }
             }
             ManageMenuDisplay();
         }
@@ -228,57 +233,60 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
 
             newNodeName = currentNode.Text.Split(' ')[0];
             var collec = (Dictionary<string, ITLec.CRMChartGuy.Property>)currentNode.Tag;
-           // string newNodeFullName = TreeNodeHelper.FullNodeName(currentNode);
-            if (newNodeName == "CustomProperties")
+            if (collec != null)
             {
-                AppendCustomProperties(parentXmlNode, collec);
-            }
-            else
-            {
-                XmlNode newNode = parentXmlNode.OwnerDocument.CreateElement(newNodeName);
-
-
-
-                foreach (string key in collec.Keys)
+                // string newNodeFullName = TreeNodeHelper.FullNodeName(currentNode);
+                if (newNodeName == "CustomProperties")
                 {
-                    if (key != "_disabled")
-                    {
-                        XmlAttribute attr = parentXmlNode.OwnerDocument.CreateAttribute(key);
-                        attr.Value = collec[key].Value;
-
-                        newNode.Attributes.Append(attr);
-                    }
-                }
-
-                TreeNode titles = null;
-                TreeNode descriptions = null;
-                var others = new List<TreeNode>();
-
-                foreach (TreeNode childNode in currentNode.Nodes)
-                {
-                    if (childNode.Text == "Titles")
-                        titles = childNode;
-                    else if (childNode.Text == "Descriptions")
-                        descriptions = childNode;
-                    else
-                        others.Add(childNode);
-                }
-
-                if (titles != null)
-                    AddXmlNode(titles, newNode, hasDisabledParent || collec.ContainsKey("_disabled"));
-                if (descriptions != null)
-                    AddXmlNode(descriptions, newNode, hasDisabledParent || collec.ContainsKey("_disabled"));
-                foreach (TreeNode otherNode in others)
-                    AddXmlNode(otherNode, newNode, hasDisabledParent || collec.ContainsKey("_disabled"));
-
-                if (collec.ContainsKey("_disabled") && !hasDisabledParent)
-                {
-                    XmlComment comment = parentXmlNode.OwnerDocument.CreateComment(newNode.OuterXml);
-                    parentXmlNode.AppendChild(comment);
+                    AppendCustomProperties(parentXmlNode, collec);
                 }
                 else
                 {
-                    parentXmlNode.AppendChild(newNode);
+                    XmlNode newNode = parentXmlNode.OwnerDocument.CreateElement(newNodeName);
+
+
+
+                    foreach (string key in collec.Keys)
+                    {
+                        if (key != "_disabled")
+                        {
+                            XmlAttribute attr = parentXmlNode.OwnerDocument.CreateAttribute(key);
+                            attr.Value = collec[key].Value;
+
+                            newNode.Attributes.Append(attr);
+                        }
+                    }
+
+                    TreeNode titles = null;
+                    TreeNode descriptions = null;
+                    var others = new List<TreeNode>();
+
+                    foreach (TreeNode childNode in currentNode.Nodes)
+                    {
+                        if (childNode.Text == "Titles")
+                            titles = childNode;
+                        else if (childNode.Text == "Descriptions")
+                            descriptions = childNode;
+                        else
+                            others.Add(childNode);
+                    }
+
+                    if (titles != null)
+                        AddXmlNode(titles, newNode, hasDisabledParent || collec.ContainsKey("_disabled"));
+                    if (descriptions != null)
+                        AddXmlNode(descriptions, newNode, hasDisabledParent || collec.ContainsKey("_disabled"));
+                    foreach (TreeNode otherNode in others)
+                        AddXmlNode(otherNode, newNode, hasDisabledParent || collec.ContainsKey("_disabled"));
+
+                    if (collec.ContainsKey("_disabled") && !hasDisabledParent)
+                    {
+                        XmlComment comment = parentXmlNode.OwnerDocument.CreateComment(newNode.OuterXml);
+                        parentXmlNode.AppendChild(comment);
+                    }
+                    else
+                    {
+                        parentXmlNode.AppendChild(newNode);
+                    }
                 }
             }
         }
