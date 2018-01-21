@@ -24,6 +24,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             InitializeComponent();
             this.chart = chart;
             this.service = service;
+            
         }
 
         public bool HasUpdatedContent { get; private set; }
@@ -44,7 +45,14 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
             Size = new Size(Size.Width + 1, Size.Height);
 
 
-            
+            this.tecVisualizationDescription.Document.FoldingManager.FoldingStrategy = new ICSharpCode.TextEditor.Src.Document.FoldingStrategy.XmlFoldingStrategy();
+            this.tecVisualizationDescription.Document.FoldingManager.UpdateFoldings(null, null);
+
+
+            this.tecDataDescription.Document.FoldingManager.FoldingStrategy = new ICSharpCode.TextEditor.Src.Document.FoldingStrategy.XmlFoldingStrategy();
+            this.tecDataDescription.Document.FoldingManager.UpdateFoldings(null, null);
+
+
             bool isSystemChart = true;
             if (chart.Attributes.Contains("userqueryvisualizationid"))
             {
@@ -289,6 +297,15 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
                 };
                 worker.RunWorkerAsync(chart);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+           var str = tecVisualizationDescription.Text;
+            var frm = new ChartReviewForm(str);
+
+            frm.Show();
         }
     }
 }

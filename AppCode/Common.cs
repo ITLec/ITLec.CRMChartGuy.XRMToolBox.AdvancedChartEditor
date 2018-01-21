@@ -41,7 +41,25 @@ namespace ITLec.CRMChartGuy.AppCode
             {
                 string pluginLocation = XrmToolBox.Extensibility.Paths.SettingsPath;
 
-                return string.Format("{0}\\{1}", pluginLocation,"ChartStructure.xml");
+                return string.Format("{0}\\{1}", pluginLocation, "ChartStructure.xml");
+            }
+        }
+        public static string TempChartXml
+        {
+            get
+            {
+                string pluginLocation = XrmToolBox.Extensibility.Paths.SettingsPath;
+
+                return string.Format("{0}\\{1}", pluginLocation, "TempChartXml.xml");
+            }
+        }
+        public static string TempChartImage
+        {
+            get
+            {
+                string pluginLocation = XrmToolBox.Extensibility.Paths.SettingsPath;
+
+                return string.Format("{0}\\{1}", pluginLocation, "TempChartImage.png");
             }
         }
 

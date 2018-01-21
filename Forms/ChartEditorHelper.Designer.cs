@@ -39,11 +39,11 @@
             this.addTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPrivilegeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorBeginOfEdition = new System.Windows.Forms.ToolStripSeparator();
-          this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorAction = new System.Windows.Forms.ToolStripSeparator();
-          /*todo    */this.addAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -224,7 +224,7 @@
             this.toolStripItem.Location = new System.Drawing.Point(4, 19);
             this.toolStripItem.Name = "toolStripItem";
             this.toolStripItem.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripItem.Size = new System.Drawing.Size(571, 30);
+            this.toolStripItem.Size = new System.Drawing.Size(534, 30);
             this.toolStripItem.TabIndex = 9;
             this.toolStripItem.Text = "toolStrip2";
             // 
@@ -311,8 +311,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gbProperties);
-            this.splitContainer1.Size = new System.Drawing.Size(836, 719);
-            this.splitContainer1.SplitterDistance = 253;
+            this.splitContainer1.Size = new System.Drawing.Size(782, 719);
+            this.splitContainer1.SplitterDistance = 236;
             this.splitContainer1.TabIndex = 28;
             // 
             // gbSiteMap
@@ -325,7 +325,7 @@
             this.gbSiteMap.Margin = new System.Windows.Forms.Padding(4);
             this.gbSiteMap.Name = "gbSiteMap";
             this.gbSiteMap.Padding = new System.Windows.Forms.Padding(4);
-            this.gbSiteMap.Size = new System.Drawing.Size(253, 719);
+            this.gbSiteMap.Size = new System.Drawing.Size(236, 719);
             this.gbSiteMap.TabIndex = 24;
             this.gbSiteMap.TabStop = false;
             this.gbSiteMap.Text = "Chart";
@@ -343,7 +343,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(245, 32);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(228, 32);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
             // buttonCancel
@@ -351,9 +351,9 @@
             this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Location = new System.Drawing.Point(125, 3);
+            this.buttonCancel.Location = new System.Drawing.Point(117, 3);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(117, 26);
+            this.buttonCancel.Size = new System.Drawing.Size(108, 26);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -365,7 +365,7 @@
             this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOk.Location = new System.Drawing.Point(3, 3);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(116, 26);
+            this.btnOk.Size = new System.Drawing.Size(108, 26);
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
@@ -389,7 +389,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(8, 20);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(184, 30);
+            this.toolStrip1.Size = new System.Drawing.Size(167, 30);
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip2";
             this.toolStrip1.Visible = false;
@@ -402,7 +402,7 @@
             this.tvSiteMap.Margin = new System.Windows.Forms.Padding(4);
             this.tvSiteMap.Name = "tvSiteMap";
             this.tvSiteMap.ShowNodeToolTips = true;
-            this.tvSiteMap.Size = new System.Drawing.Size(245, 696);
+            this.tvSiteMap.Size = new System.Drawing.Size(228, 696);
             this.tvSiteMap.TabIndex = 0;
             this.tvSiteMap.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TvSiteMapNodeMouseClick);
             // 
@@ -415,7 +415,7 @@
             this.gbProperties.Margin = new System.Windows.Forms.Padding(4);
             this.gbProperties.Name = "gbProperties";
             this.gbProperties.Padding = new System.Windows.Forms.Padding(4);
-            this.gbProperties.Size = new System.Drawing.Size(579, 719);
+            this.gbProperties.Size = new System.Drawing.Size(542, 719);
             this.gbProperties.TabIndex = 23;
             this.gbProperties.TabStop = false;
             this.gbProperties.Text = "Properties";
@@ -426,7 +426,7 @@
             this.panelContainer.Location = new System.Drawing.Point(4, 49);
             this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(571, 666);
+            this.panelContainer.Size = new System.Drawing.Size(534, 666);
             this.panelContainer.TabIndex = 15;
             // 
             // toolStripSeparatorSystem
@@ -644,12 +644,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 719);
+            this.ClientSize = new System.Drawing.Size(782, 719);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStripMain);
             this.Name = "ChartEditorHelper";
             this.Text = "ChartEditorHelper";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStripItem.ResumeLayout(false);
             this.toolStripItem.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

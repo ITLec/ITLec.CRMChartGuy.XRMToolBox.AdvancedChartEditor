@@ -49,11 +49,11 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             Section section = null;
             if (NodeName == "Series.Series.CustomProperties")
             {
-                section = _chart.Sections.Where(e => e.Name == "Series.Series.CustomProperties."+ChartEditorHelper.ChartType).FirstOrDefault();
+                section = _chart.Sections.Where(e => e.Name == "Series.Series.CustomProperties." + ChartEditorHelper.ChartType).FirstOrDefault();
             }
             else
             {
-                 section = _chart.Sections.Where(e => e.Name == NodeName).FirstOrDefault();
+                section = _chart.Sections.Where(e => e.Name == NodeName).FirstOrDefault();
             }
 
 
@@ -68,19 +68,76 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
             foreach (var item in collec)
             {
                 item.Value.Type = Common.DetectChartElementType(item.Key, item.Value.Value);
-                AddDictionaryKeyControl( item.Value);
+                AddDictionaryKeyControl(item.Value);
             }
 
             int x = 0;
             foreach (var item in DictionaryKeyControl.Values)
             {
-                item.Location = new Point(0, x);
-                x = x + 50;
-                panelMain.Height = panelMain.Height + 50;
+                GroupBox itemGroupBox = null;
+
+                //panelMain.Height = panelMain.Height + 50;
                 item.Dock = DockStyle.Top;
-                panelMain.Controls.Add(item);
+
+
+                foreach (var ctrl in panelMain.Controls)
+                {
+                    if (ctrl is GroupBox)
+                    {
+
+                        var tmpGroupBox = (GroupBox)ctrl;
+
+                        if (tmpGroupBox.Name == item.CurrentProperty.GroupId)
+                        {
+                            itemGroupBox = tmpGroupBox;
+                        }
+
+                    }
+                }
+
+                if (itemGroupBox == null)
+                {
+                    itemGroupBox = new GroupBox();
+
+                    //      itemGroupBox.Width = panelMain.Width-5;
+                    itemGroupBox.Dock = DockStyle.Top;
+                    itemGroupBox.Location = new Point(0, x);
+
+                    var group = Common.ChartStructure.Groups.Where(e => e.GroupId == item.CurrentProperty.GroupId).FirstOrDefault();
+
+
+                    itemGroupBox.Name = item.CurrentProperty.GroupId;
+                    itemGroupBox.Text = ((group != null) && (!string.IsNullOrEmpty(group.Name))) ? group.Name : item.CurrentProperty.GroupId;
+                    if (((group != null) && (!string.IsNullOrEmpty(group.Name))))
+                    {
+                        ToolTip toolTip1 = new ToolTip();
+                        toolTip1.SetToolTip(itemGroupBox, group.Desc);
+                    }
+
+                    itemGroupBox.Font = new Font(DefaultFont.FontFamily, DefaultFont.Size, FontStyle.Bold);
+                    // itemGroupBox.ForeColor = Color.Red;
+                    itemGroupBox.Height = 25;
+                    panelMain.Controls.Add(itemGroupBox);
+                }
+
+
+                item.Location = new Point(0, itemGroupBox.Height);
+                itemGroupBox.Controls.Add(item);
+                itemGroupBox.Height = itemGroupBox.Height + item.Height;
+                //x = x + 50;
             }
 
+            foreach (var ctrl in panelMain.Controls)
+            {
+                if (ctrl is GroupBox)
+                {
+
+                    foreach (Control c in (ctrl as GroupBox).Controls)
+                    {
+                        c.Font = new Font(DefaultFont.FontFamily, DefaultFont.Size, FontStyle.Regular);
+                    }
+                }
+            }
         }
 
 

@@ -86,6 +86,23 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
                 SetDesc(value);
             }
         }
+        private string groupId;
+        public string GroupId
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(groupId))
+                {
+                    groupId = "Other";
+                }
+                return groupId;
+            }
+            set
+            {
+                groupId = value;
+      //          SetGroupId(value);
+            }
+        }
 
         public bool IsIgnoreSave
         {
@@ -113,12 +130,13 @@ namespace ITLecChartGuy.AdvancedChartEditor.Controls
 
 
         protected abstract void SetDesc(string desc);
-        
+      //  protected abstract void SetGroupId(string desc);
+
         public ITLec.CRMChartGuy.Property CurrentProperty
         {
             get
             {
-               var retVal =  new ITLec.CRMChartGuy.Property() {/*DefaultValue = this.InitValue,*/ Desc=this.Desc, DisplayName=this.Label, Name= this.Key, Value = this.Value};
+               var retVal =  new ITLec.CRMChartGuy.Property() {/*DefaultValue = this.InitValue,*/GroupId=this.GroupId, Desc=this.Desc, DisplayName=this.Label, Name= this.Key, Value = this.Value};
 
                 return retVal;
             }

@@ -13,6 +13,7 @@ namespace ITLec.CRMChartGuy
         public List<Property> ChartProperties = new List<Property>();
 
         public List<Section> Sections = new List<Section>();
+        public List<Group> Groups = new List<Group>();
 
         public List<CustomEnum> CustomEnums = new List<CustomEnum>();
 
@@ -20,6 +21,25 @@ namespace ITLec.CRMChartGuy
         public List<CustomProperties> CustomPropertiesSet = new List<CustomProperties>();
     }
 
+    public class Group
+    {
+
+        public string GroupId
+        {
+            get;
+            set;
+        }
+        public string Name
+        {
+            get;
+            set;
+        }
+        public string Desc
+        {
+            get;
+            set;
+        }
+    }
     public class Section
     {
         public string Name
@@ -108,6 +128,11 @@ namespace ITLec.CRMChartGuy
         //    set;
         //}
         public string DefaultValue
+        {
+            get;
+            set;
+        }
+        public string GroupId
         {
             get;
             set;

@@ -54,7 +54,7 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
         {
             XmlNode chartEditorXmlNode = siteMapDoc.DocumentElement;
             tvSiteMap.Nodes.Clear();
-            /* Add Annotation
+            /* Add Annotation */
             bool addAnotationsNode = true;
             //Add Annotation
             foreach (XmlNode node in chartEditorXmlNode.ChildNodes)
@@ -73,7 +73,8 @@ namespace ITLecChartGuy.AdvancedChartEditor.Forms
                 annotationNode.AppendChild(textAnnotation);
 
                 chartEditorXmlNode.AppendChild(annotationNode);
-            }*/
+            }
+            /*End Annotation*/
 
             TreeNodeHelper.AddTreeViewNode(tvSiteMap, chartEditorXmlNode, this);
 

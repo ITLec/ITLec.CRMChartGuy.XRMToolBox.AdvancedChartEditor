@@ -13,8 +13,7 @@ public  class BaseMainChartUserControl :  UserControl
     {
 
         public string NodeName;
-
-
+        
         public  event Action<object, SaveEventArgs> Saving;
 
         protected virtual void OnSaving(object sender, SaveEventArgs arg)
@@ -114,7 +113,7 @@ public  class BaseMainChartUserControl :  UserControl
                         obj = new TextControl();
                         break;
                 }
-
+                obj.GroupId = property.GroupId;
                 AddDictionaryKeyControl(obj, property);
                 Property p = new Property();
             }

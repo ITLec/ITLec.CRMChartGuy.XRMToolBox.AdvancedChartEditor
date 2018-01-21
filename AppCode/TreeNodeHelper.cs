@@ -166,15 +166,15 @@ namespace ITLec.CRMChartGuy.AppCode
                         TreeNode customNode = new TreeNode("CustomProperties");
                         Dictionary <string, ITLec.CRMChartGuy.Property> customAttributes = new Dictionary<string, ITLec.CRMChartGuy.Property>();
 
-                        string[] propertyItems = attr.Value.Replace(" ","").Split(',');
-
+                        //todo   string[] propertyItems = attr.Value.Replace(" ","").Split(',');
+                        string[] propertyItems = attr.Value.Split(',');
                         foreach (string propertyItem in propertyItems)
                         {
                             if (!string.IsNullOrEmpty(propertyItem))
                             {
                                 string[] propertyItemStrs = propertyItem.Split('=');
-                                string propertyItemKey = propertyItemStrs[0];
-                                string propertyItemValue = propertyItemStrs[1];
+                                string propertyItemKey = propertyItemStrs[0].Trim();
+                                string propertyItemValue = propertyItemStrs[1].Trim();
 
                                 ITLec.CRMChartGuy.Property pro = new Property() { Value = propertyItemValue, Name = propertyItemKey };
 

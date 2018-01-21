@@ -31,6 +31,7 @@
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.buttonDeleteChart = new System.Windows.Forms.Button();
             this.buttonSaveAs = new System.Windows.Forms.Button();
             this.btnUpdatePublish = new System.Windows.Forms.Button();
@@ -42,10 +43,14 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lblDataDescription = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.tecDataDescription = new ICSharpCode.TextEditor.TextEditorControl();
-            this.lblVisualizationDescription = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblDataDescription = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.tecVisualizationDescription = new ICSharpCode.TextEditor.TextEditorControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblVisualizationDescription = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtChartType = new System.Windows.Forms.TextBox();
             this.pnlTitle.SuspendLayout();
@@ -54,6 +59,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTitle
@@ -79,6 +88,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnPreview);
             this.panel2.Controls.Add(this.buttonDeleteChart);
             this.panel2.Controls.Add(this.buttonSaveAs);
             this.panel2.Controls.Add(this.btnUpdatePublish);
@@ -92,10 +102,22 @@
             this.panel2.Size = new System.Drawing.Size(940, 41);
             this.panel2.TabIndex = 1;
             // 
+            // btnPreview
+            // 
+            this.btnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPreview.Location = new System.Drawing.Point(200, 4);
+            this.btnPreview.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(100, 28);
+            this.btnPreview.TabIndex = 11;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.button1_Click);
+            // 
             // buttonDeleteChart
             // 
             this.buttonDeleteChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteChart.Location = new System.Drawing.Point(524, 4);
+            this.buttonDeleteChart.Location = new System.Drawing.Point(560, 4);
             this.buttonDeleteChart.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeleteChart.Name = "buttonDeleteChart";
             this.buttonDeleteChart.Size = new System.Drawing.Size(128, 28);
@@ -107,7 +129,7 @@
             // buttonSaveAs
             // 
             this.buttonSaveAs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSaveAs.Location = new System.Drawing.Point(679, 4);
+            this.buttonSaveAs.Location = new System.Drawing.Point(696, 4);
             this.buttonSaveAs.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSaveAs.Name = "buttonSaveAs";
             this.buttonSaveAs.Size = new System.Drawing.Size(128, 28);
@@ -119,7 +141,7 @@
             // btnUpdatePublish
             // 
             this.btnUpdatePublish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdatePublish.Location = new System.Drawing.Point(369, 4);
+            this.btnUpdatePublish.Location = new System.Drawing.Point(424, 4);
             this.btnUpdatePublish.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdatePublish.Name = "btnUpdatePublish";
             this.btnUpdatePublish.Size = new System.Drawing.Size(128, 28);
@@ -131,7 +153,7 @@
             // btnlVisualEditor
             // 
             this.btnlVisualEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlVisualEditor.Location = new System.Drawing.Point(48, 4);
+            this.btnlVisualEditor.Location = new System.Drawing.Point(24, 4);
             this.btnlVisualEditor.Margin = new System.Windows.Forms.Padding(4);
             this.btnlVisualEditor.Name = "btnlVisualEditor";
             this.btnlVisualEditor.Size = new System.Drawing.Size(167, 28);
@@ -143,7 +165,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(242, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(312, 4);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 28);
@@ -214,59 +236,91 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lblDataDescription);
-            this.splitContainer1.Panel1.Controls.Add(this.tecDataDescription);
+            this.splitContainer1.Panel1.Controls.Add(this.panel5);
+            this.splitContainer1.Panel1.Controls.Add(this.panel3);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.lblVisualizationDescription);
-            this.splitContainer1.Panel2.Controls.Add(this.tecVisualizationDescription);
+            this.splitContainer1.Panel2.Controls.Add(this.panel4);
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(940, 491);
             this.splitContainer1.SplitterDistance = 245;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 6;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.tecDataDescription);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 24);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(940, 221);
+            this.panel5.TabIndex = 8;
+            // 
+            // tecDataDescription
+            // 
+            this.tecDataDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tecDataDescription.IsReadOnly = false;
+            this.tecDataDescription.Location = new System.Drawing.Point(0, 0);
+            this.tecDataDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tecDataDescription.Name = "tecDataDescription";
+            this.tecDataDescription.Size = new System.Drawing.Size(940, 221);
+            this.tecDataDescription.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lblDataDescription);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(940, 24);
+            this.panel3.TabIndex = 7;
+            // 
             // lblDataDescription
             // 
             this.lblDataDescription.AutoSize = true;
-            this.lblDataDescription.Location = new System.Drawing.Point(11, 0);
+            this.lblDataDescription.Location = new System.Drawing.Point(8, 0);
             this.lblDataDescription.Name = "lblDataDescription";
             this.lblDataDescription.Size = new System.Drawing.Size(113, 17);
             this.lblDataDescription.TabIndex = 6;
             this.lblDataDescription.Text = "Data Description";
             // 
-            // tecDataDescription
+            // panel4
             // 
-            this.tecDataDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tecDataDescription.IsReadOnly = false;
-            this.tecDataDescription.Location = new System.Drawing.Point(141, 2);
-            this.tecDataDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tecDataDescription.Name = "tecDataDescription";
-            this.tecDataDescription.Size = new System.Drawing.Size(788, 240);
-            this.tecDataDescription.TabIndex = 0;
+            this.panel4.Controls.Add(this.tecVisualizationDescription);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 24);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(940, 219);
+            this.panel4.TabIndex = 10;
+            // 
+            // tecVisualizationDescription
+            // 
+            this.tecVisualizationDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tecVisualizationDescription.IsReadOnly = false;
+            this.tecVisualizationDescription.Location = new System.Drawing.Point(0, 0);
+            this.tecVisualizationDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tecVisualizationDescription.Name = "tecVisualizationDescription";
+            this.tecVisualizationDescription.Size = new System.Drawing.Size(940, 219);
+            this.tecVisualizationDescription.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblVisualizationDescription);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(940, 24);
+            this.panel1.TabIndex = 9;
             // 
             // lblVisualizationDescription
             // 
             this.lblVisualizationDescription.AutoSize = true;
-            this.lblVisualizationDescription.Location = new System.Drawing.Point(11, 7);
+            this.lblVisualizationDescription.Location = new System.Drawing.Point(8, 0);
             this.lblVisualizationDescription.Name = "lblVisualizationDescription";
             this.lblVisualizationDescription.Size = new System.Drawing.Size(128, 17);
             this.lblVisualizationDescription.TabIndex = 8;
             this.lblVisualizationDescription.Text = "Presentation Desc.";
-            // 
-            // tecVisualizationDescription
-            // 
-            this.tecVisualizationDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tecVisualizationDescription.IsReadOnly = false;
-            this.tecVisualizationDescription.Location = new System.Drawing.Point(141, -1);
-            this.tecVisualizationDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tecVisualizationDescription.Name = "tecVisualizationDescription";
-            this.tecVisualizationDescription.Size = new System.Drawing.Size(788, 248);
-            this.tecVisualizationDescription.TabIndex = 7;
             // 
             // label2
             // 
@@ -307,17 +361,21 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Chart Editor";
+            this.Text = "+";
             this.Load += new System.EventHandler(this.ChartEditor_Load);
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,12 +396,17 @@
         private ICSharpCode.TextEditor.TextEditorControl tecDataDescription;
         private System.Windows.Forms.Label lblDataDescription;
         private System.Windows.Forms.Label lblVisualizationDescription;
-        private ICSharpCode.TextEditor.TextEditorControl tecVisualizationDescription;
         private System.Windows.Forms.Button btnlVisualEditor;
         private System.Windows.Forms.Button btnUpdatePublish;
         private System.Windows.Forms.Button buttonSaveAs;
         private System.Windows.Forms.Button buttonDeleteChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtChartType;
+        private ICSharpCode.TextEditor.TextEditorControl tecVisualizationDescription;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnPreview;
     }
 }
